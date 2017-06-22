@@ -75,7 +75,10 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             When I started thinking about my other options, it hit me: there's tons of computers on my campus that are set up for remote log in! Why not distribute my rendering across those? Blender 3D comes with a few plugins to help with distributed rendering, but that quickly became a mess because it was hard to keep track of the virtual machine instances. 
         </p>
         <p>
-            Since it was pretty clear that using the premade tools wasn't feasabile for my setup, my 
+            Since it was pretty clear that using the premade tools wasn't feasabile for my setup, the next logical step was to see if I could break apart the software to twist it into working. Luckily Blender 3D is open source so all the source code is availbe to the public. Unfortuantly, they have very little documentation. I poured many hours into disecting the renderer to see if I could understand how to implement it into my own distributed rendering system. It came so close to working, but there was always a couple parts that weren't working and once those were fixed, it spawned even more issues. Frustrated, I gave up. Then took it up again, and gave up again.
+        </p>
+        <p>
+            After a few months of not working on this project, I was researching computer graphics out of curisoty and I regained interest. This is when I made a crazy decision. Why not build my own renderer? 
         </p>
         
       <div class="w3-row">
