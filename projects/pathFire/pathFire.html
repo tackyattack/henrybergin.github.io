@@ -63,23 +63,72 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
     <div class="w3-container">
         <p>
-            This project started when I was watching the Netflix series, Stranger Things. VFX has always been a side hobby of mine so when I saw the 3D creature in the show, I was captured because it looked so cool. At the time it had been awhile since I did some VFX, so this kind of sparked my interest again. Over the next couple days (between the stresses of my classes), I would spare a little brain power to get reacquainted with <a href="https://www.blender.org/">Blender 3D</a> -- my favorite 3D modeling software that I've been using since I a little kid.
+            This project started when I was watching the Netflix series, Stranger Things. VFX has always been a side hobby of mine so when I saw the 3D creature in the show, I was captured because it looked so cool. At the time it had been awhile since I did some VFX, so this kind of sparked my interest again. Over the next couple days (between the stresses of my classes), I would spare a little brain power to get reacquainted with <a href="https://www.blender.org/">Blender 3D</a>: my favorite 3D modeling software that I've been using since I a little kid.
         </p>
+        
         <p>
              Modeling software is always changing, but one thing that's stayed constant is rendering times. They're long. VERY long. Take Toy Story 3 for example: each frame of the film took, on average, 7 hours to render. Sometimes up to 39. That's a long time! Escpecially considering there's 24 frames per second of film. Of course, they have render farms with tons of machines to split up the workload so it doesn't take tens of years. 
         </p>
+        
         <p>
             Obvisouly my VFX work isn't going to be so complex that it takes 7 hours per frame to render, but it's not hard to get up to 30 minutes. This can get extremly frustrating when trying to make small changes because you can't really tell what your work is going to look like until the frame renders. And not only that, but my computer gets so hot that I can burn myself. Which isn't good. So this is where I started to wonder to myself, "could I run my peices through a render farm somehwere so I don't have to deal with this?" Turns out there's a lot of options for offsite rendering, but there's a problem: it costs money. Nope! Not on an option on my college student budget.
         </p>
+        
         <p>
             When I started thinking about my other options, it hit me: there's tons of computers on my campus that are set up for remote log in! Why not distribute my rendering across those? Blender 3D comes with a few plugins to help with distributed rendering, but that quickly became a mess because it was hard to keep track of the virtual machine instances. 
         </p>
+        
         <p>
             Since it was pretty clear that using the premade tools wasn't feasabile for my setup, the next logical step was to see if I could break apart the software to twist it into working. Luckily Blender 3D is open source so all the source code is availbe to the public. Unfortuantly, they have very little documentation. I poured many hours into disecting the renderer to see if I could understand how to implement it into my own distributed rendering system. It came so close to working, but there was always a couple parts that weren't working and once those were fixed, it spawned even more issues. Frustrated, I gave up. Then took it up again, and gave up again.
         </p>
+        
         <p>
-            After a few months of not working on this project, I was researching computer graphics out of curisoty and I regained interest. This is when I made a crazy decision. Why not build my own renderer? 
+            After a few months of not working on this project, I was researching computer graphics out of curisoty and I regained interest. "Why not build my own renderer?" I thought to myself. It would be a daunting task, but the combination of art and computer science seemed like the perfect project for me. 
         </p>
+        
+        <p>
+            Even just finding a starting point took me quite some time because I had very little knowledge of computer graphics. I started simple -- figuring out how to put a colored pixel on the screen. Then, I moved on to perspectives, projection, rays, geometry representations, surface normals and, finally, raytracing.  
+        </p>
+        
+        <p>
+            Once I started getting into the math side of the physics light-transport equations and vector math, I started to struggle. I had not yet taken multivariable calculus or linear algebra, which is what a lot of computer graphics relies upon. Those courses weren't too far ahead in my college career, but I wasn't about to just wait until then. So, I set aside the time to learn this necessary topic. One thing I've learned about this project is that it has roots in a wide spread of areas. It turned out to be a good thing that I went ahead and learned the mathematics behind it because it helped me understand the courses I was taking on a deeper level. I was able to visualize in my head these beuatiful properties that would've likley given me trouble otherwise.
+        </p>
+        
+        <p>
+            Getting back to the renderer, my first test was to make a surface normal visualizer. At this point I had created an OBJ (file format for 3D models) reader, a basic ray tracer, and an image routine. Below you can see the result. The input file is nothing more than a list of triangles. The colors you see are based off of what direcrtion the surface normal is pointing in.
+        </p>
+        
+        <div class="w3-center">
+        <img src="images/arrow.png" style="width:80%" alt="Normal Visualization"/>
+        </div>
+        
+        <p>
+            Now I was getting somewhere! My next step was to turn my ray tracer into a path tracer. The difference between the two is a ray tracer can only compute direct lighting, where's a path tracer lets the rays bounce around the scence as they would in the physical world. Hence, why it's a photorealistic rendering. It's a rather simple technique, but it allows such incredible rendering. Below is the equation used to calculate path tracing.
+        </p>
+        
+        <div class="w3-center">
+        <img src="images/lte.jpg" style="width:40%" alt="Light Transport Equation"/>
+        </div>
+        
+        <p>
+            It's a simple idea, but the fun comes when you start using different techniques to evaluate the integral. The most common is Monte Carlo integration, which is the method I chose. In short, it's esentially throwing mathmematical darts towards at a dart board. And to speed things up, I use importance sampling (steering the darts towards the right spot, but ensuring the answer remains unbiased by calculating the probability of said direction). These darts do create noise, which you'll see below, but with enough samples the image will be clean. There's other techniques to speed things up, but that usually leads to the renderer being biased, making it no longer physically accurate. 
+        </p>
+        
+        <p>
+            After many sleepless nights and frustrations, it started coming alive. I was absolutley astonished when I saw a side-by-side comparison of my renderer and Blender's. The pop-up window on the right is mine, and the left is Blender's.
+        </p>
+        
+        <div class="w3-center">
+        <img src="images/example.png" style="width:80%" alt="Light Transport Equation"/>
+        </div>
+        
+        <p>
+            And another with a glossy material. Left: mine, Right: Blender
+        </p>
+        
+        <div class="w3-center">
+        <img src="images/side_by_side.png" style="width:80%" alt="Light Transport Equation"/>
+        </div>
         
       <div class="w3-row">
         <div class="w3-col m8 s12 w3-padding">
