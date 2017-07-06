@@ -1,7 +1,1 @@
-@media screen and (min-width: 0px) and (max-width: 600px) {
-  #henry-mobile-screen { display: block; }  /* show it on small screens */
-}
-
-@media screen and (min-width: 601px) and (max-width: 1024px) {
-  #henry-mobile-screen { display: none; }   /* hide it elsewhere */
-}
+.henry-video-container{max-width:100%;max-height:auto}
