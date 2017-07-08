@@ -72,7 +72,43 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             <iframe class="henry-video-container" width="560" height="315"  src="https://www.youtube.com/embed/Ndc-34iGLik" frameborder="0" allowfullscreen></iframe>
         </div>
         
-      <div class="w3-row">
+        <p>
+            This project started because I needed a Halloween costume and I had always wanted to incorporate my electronics knowledge into something fun such as this. The idea came from my favorite music duo: Daft Punk. Both of them wear robotic-like costumes when they performed, so naturally this had to be my costume too.  
+        </p>
+        
+        <p>
+            I picked Thomas' helmet since the shape would be easier to recreate. The base I chose was a baseball helmet because the visor made for a perfect shape to match the real deal. I used a combination of cardboard and shiny air duct tape to follow the design as closely as I could with my shoestring budget.
+        </p>
+        
+        <p>
+            After the helmet part was done, I moved on to the electronics. Rather than buying an LED display for the front (expensive and not shaped right), I decided to create my own. First I bought I bunch of cheap red LEDs off of eBay and soldered them into a visor shape. After fitting them, I coated the backs with black enamel paint to make sure no light leaked backwards and blinded me. This was a really good decision because it made it possible to see outward.
+        </p>
+        
+        <p>
+            For the controller board, I used a combination of a Microchip PIC development board and a custom LED controller made from daisy chained shift registers. Essentially, the way it works is the PIC shifts in an array of high/low combinations to the register chips, which then ground/source the LEDs in a pixelated pattern. It's fairly simple and allows a lot of control. I multiplex them so only one row is on at a time, but the data rate is high enough that all the pixels appear to be lit. As shown in the video, it cycles through a set of LED "shows" that I modeled after the real helmet.
+        </p>
+        
+        <div class="w3-center">
+        <img class="w3-image" src="IMG_0363.JPG" width="700"/>
+        </div>
+        
+        <div class="w3-center">
+        <img class="w3-image" src="IMG_0364.JPG" width="700"/>
+        </div>
+        
+        <div class="w3-center">
+        <img class="w3-image" src="IMG_0365.JPG" width="700"/>
+        </div>
+      
+        <div class="w3-center">
+        <img class="w3-image" src="IMG_0367.JPG" width="700"/>
+        </div>
+        
+        <div class="w3-center">
+        <img class="w3-image" src="IMG_0372.JPG" width="700"/>
+        </div>
+        
+        <div class="w3-row">
         <div class="w3-col m8 s12 w3-padding">
             <a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" href="../../projects.html">BACK</a>
         </div>
