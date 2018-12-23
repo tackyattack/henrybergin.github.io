@@ -86,7 +86,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                     var a = currentScript.attributes[j];
                                     s.setAttribute(a.name, a.value);
                                 }
-                                s.appendChild(document.createTextNode(currentScript.innerHTML));
+                                //s.appendChild(document.createTextNode(currentScript.innerHTML));
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
                             }
