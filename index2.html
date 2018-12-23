@@ -51,7 +51,6 @@
         <div class="w3-padding-large" id="main">
             <p>Hello, world</p>
         </div>
-        <div id="scripts"></div>
 
         <!-- have this as the main controller. This will load all the different views. Maybe it can have some sort
 of event thing where each page includes a script (loaded as a link; dont paste it a bunch) that takes
@@ -75,27 +74,22 @@ all events that you can trigger can go in here. Should be a singleton.
 
                             var scripts = document.getElementById("main").getElementsByTagName("script");
 
+                            // replace the scripts with ones that can actually run
+                            var scriptsClone = [];
                             for (var i = 0; i < scripts.length; i++) {
-                                document.getElementById("scripts").appendChild(scripts[i])
+                                scriptsClone.push(scripts[i]);
                             }
-                            
-
-
-                            //                            var scriptsClone = [];
-                            //                            for (var i = 0; i < scripts.length; i++) {
-                            //                                scriptsClone.push(scripts[i]);
-                            //                            }
-                            //                            for (var i = 0; i < scriptsClone.length; i++) {
-                            //                                var currentScript = scriptsClone[i];
-                            //                                var s = document.createElement("script");
-                            //                                // Copy all the attributes from the original script
-                            //                                for (var j = 0; j < currentScript.attributes.length; j++) {
-                            //                                    var a = currentScript.attributes[j];
-                            //                                    s.setAttribute(a.name, a.value);
-                            //                                }
-                            //                                s.appendChild(document.createTextNode(currentScript.innerHTML));
-                            //                                currentScript.parentNode.replaceChild(s, currentScript);
-                            //                            }
+                            for (var i = 0; i < scriptsClone.length; i++) {
+                                var currentScript = scriptsClone[i];
+                                var s = document.createElement("script");
+                                // Copy all the attributes from the original script
+                                for (var j = 0; j < currentScript.attributes.length; j++) {
+                                    var a = currentScript.attributes[j];
+                                    s.setAttribute(a.name, a.value);
+                                }
+                                s.appendChild(document.createTextNode(currentScript.innerHTML));
+                                currentScript.parentNode.replaceChild(s, currentScript);
+                            }
                         }
                     };
                     xhttp.open("GET", m_view, true);
