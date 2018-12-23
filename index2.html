@@ -86,6 +86,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                     var a = currentScript.attributes[j];
                                     s.setAttribute(a.name, a.value);
                                     console.log(a.name + " xx " + a.value);
+                                    s.async = false;
                                 }
                                 var script_html = currentScript.innerHTML
                                 if(script_html.length > 0)
