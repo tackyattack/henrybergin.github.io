@@ -69,7 +69,7 @@ all events that you can trigger can go in here. Should be a singleton.
                     {
                         if (this.readyState == 4 && this.status == 200)
                         {
-                            document.getElementById("main").innerHTML = this.responseText;
+                            document.getElementById("main").InnerHTML = this.responseText;
                         }
                     };
                     xhttp.open("GET", m_view, true);
