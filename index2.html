@@ -89,9 +89,10 @@ all events that you can trigger can go in here. Should be a singleton.
                                 var script_html = currentScript.innerHTML
                                 if(script_html.length > 0)
                                 {
-                                    s.appendChild(document.createTextNode(script_html));
-                                    console.log(script_html)
+                                    
                                 }
+                                //s.appendChild(document.createTextNode(script_html));
+                                console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
                             }
