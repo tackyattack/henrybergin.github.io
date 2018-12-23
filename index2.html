@@ -47,19 +47,7 @@
 
         <!-- Page Content -->
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-        $(document).ready(function(){
-            $("#fade1").fadeIn(1000);
-            $("#fade2").fadeIn(1500);
-            $("#fade3").fadeIn(2200);
-            $("#fade4").fadeIn(2500);
-            $("#fade5").fadeIn(2500);
-        });
-        </script>
-        
-        
-        <div id="content" class="w3-padding-large" id="main">
+        <div class="w3-padding-large" id="main">
             <p>Hello, world</p>
         </div>
         
@@ -71,7 +59,7 @@
                 {
                     if (this.readyState == 4 && this.status == 200)
                     {
-                        document.getElementById("content").innerHTML = this.responseText;
+                        document.getElementById("main").innerHTML = this.responseText;
                     }
                 };
                 xhttp.open("GET", "projects/daftpunk/daftpunk.html", true);
