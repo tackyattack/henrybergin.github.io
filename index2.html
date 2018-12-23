@@ -81,7 +81,8 @@ all events that you can trigger can go in here. Should be a singleton.
                             }
                             for (var i = 0; i < scriptsClone.length; i++) {
                                 var currentScript = scriptsClone[i];
-                                var s = document.createElement("script");
+                                //var s = document.createElement("script");
+                                var s = document.getElementById("scripts")
                                 // Copy all the attributes from the original script
                                 for (var j = 0; j < currentScript.attributes.length; j++) {
                                     var a = currentScript.attributes[j];
