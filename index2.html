@@ -61,7 +61,7 @@ all events that you can trigger can go in here. Should be a singleton.
         <script>
 
             var main_controller = 
-                {
+                {   
                     set_view : function(m_view)
                     {
                         var xhttp = new XMLHttpRequest();
@@ -75,6 +75,7 @@ all events that you can trigger can go in here. Should be a singleton.
                         xhttp.open("GET", m_view, true);
                         xhttp.send();
                     }
+                    
                 };
 
             main_controller.set_view("projects/daftpunk/daftpunk.html");
