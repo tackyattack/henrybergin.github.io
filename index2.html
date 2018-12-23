@@ -85,7 +85,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                 for (var j = 0; j < currentScript.attributes.length; j++) {
                                     var a = currentScript.attributes[j];
                                     s.setAttribute(a.name, a.value);
-                                    console.log(a.name + " xx " a.value);
+                                    console.log(a.name + " xx " + a.value);
                                 }
                                 var script_html = currentScript.innerHTML
                                 if(script_html.length > 0)
