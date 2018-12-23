@@ -95,7 +95,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                 // note: currently only works if the src with jquery is outside on the index. Look at console for error.
                                 //s.appendChild(document.createTextNode(script_html));
                                 console.log(script_html)
-                                currentScript.parentNode.replaceChild(s, currentScript);
+                                currentScript.parentNode.replaceChild(s, scripts[i]);
                                 console.log(s);
                             }
                         }
