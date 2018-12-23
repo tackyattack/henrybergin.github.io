@@ -75,22 +75,27 @@ all events that you can trigger can go in here. Should be a singleton.
 
                             var scripts = document.getElementById("main").getElementsByTagName("script");
 
-                            var scriptsClone = [];
                             for (var i = 0; i < scripts.length; i++) {
-                                scriptsClone.push(scripts[i]);
+                                scripts.appendChild(scripts[i])
                             }
-                            for (var i = 0; i < scriptsClone.length; i++) {
-                                var currentScript = scriptsClone[i];
-                                //var s = document.createElement("script");
-                                var s = document.getElementById("scripts")
-                                // Copy all the attributes from the original script
-                                for (var j = 0; j < currentScript.attributes.length; j++) {
-                                    var a = currentScript.attributes[j];
-                                    s.setAttribute(a.name, a.value);
-                                }
-                                s.appendChild(document.createTextNode(currentScript.innerHTML));
-                                currentScript.parentNode.replaceChild(s, currentScript);
-                            }
+                            
+
+
+                            //                            var scriptsClone = [];
+                            //                            for (var i = 0; i < scripts.length; i++) {
+                            //                                scriptsClone.push(scripts[i]);
+                            //                            }
+                            //                            for (var i = 0; i < scriptsClone.length; i++) {
+                            //                                var currentScript = scriptsClone[i];
+                            //                                var s = document.createElement("script");
+                            //                                // Copy all the attributes from the original script
+                            //                                for (var j = 0; j < currentScript.attributes.length; j++) {
+                            //                                    var a = currentScript.attributes[j];
+                            //                                    s.setAttribute(a.name, a.value);
+                            //                                }
+                            //                                s.appendChild(document.createTextNode(currentScript.innerHTML));
+                            //                                currentScript.parentNode.replaceChild(s, currentScript);
+                            //                            }
                         }
                     };
                     xhttp.open("GET", m_view, true);
