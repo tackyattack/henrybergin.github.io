@@ -81,19 +81,14 @@ all events that you can trigger can go in here. Should be a singleton.
                             for (var i = 0; i < scriptsClone.length; i++) {
                                 var currentScript = scriptsClone[i];
                                 var s = document.createElement("script");
+                                s.async = false;
                                 // Copy all the attributes from the original script
                                 for (var j = 0; j < currentScript.attributes.length; j++) {
                                     var a = currentScript.attributes[j];
                                     s.setAttribute(a.name, a.value);
                                     console.log(a.name + " xx " + a.value);
-                                    s.async = false;
                                 }
                                 var script_html = currentScript.innerHTML
-                                if(script_html.length > 0)
-                                {
-                                    
-                                }
-                                // note: currently only works if the src with jquery is outside on the index. Look at console for error.
                                 s.appendChild(document.createTextNode(script_html));
                                 console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, scripts[i]);
