@@ -62,6 +62,12 @@ all events that you can trigger can go in here. Should be a singleton.
 
             var main_controller = {   
 
+                var continue = false;
+                script_loaded()
+                {
+                    continue = true;
+                };
+                
                 set_view(m_view)
                 {
                     var xhttp = new XMLHttpRequest();
@@ -88,17 +94,20 @@ all events that you can trigger can go in here. Should be a singleton.
                                     s.setAttribute(a.name, a.value);
                                     console.log(a.name + " xx " + a.value);
                                 }
-                                var continute = false;
+                                continue = false;
                                 script.onload = function() 
                                 {
-                                    continute = true;
+                                    script_loaded();
                                 };
                                 var script_html = currentScript.innerHTML
                                 s.appendChild(document.createTextNode(script_html));
                                 console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
-                                while(continute == false);
+                                while(continute == false)
+                                    {
+                                        var x = 1;
+                                    }
                             }
                         }
                     };
