@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
         body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
         .w3-row-padding img {margin-bottom: 12px}
@@ -60,14 +61,7 @@ all events that you can trigger can go in here. Should be a singleton.
 
         <script>
             
-            var continue_loading = false;
-            
             class view_controller{   
-                
-                script_loaded()
-                {
-                    continue_loading = true;
-                }
                 
                 set_view(m_view)
                 {
@@ -93,22 +87,11 @@ all events that you can trigger can go in here. Should be a singleton.
                                 for (var j = 0; j < currentScript.attributes.length; j++) {
                                     var a = currentScript.attributes[j];
                                     s.setAttribute(a.name, a.value);
-                                    console.log(a.name + " xx " + a.value);
                                 }
-                                continue_loading = false;
-                                s.onload = function() 
-                                {
-                                    script_loaded();
-                                };
                                 var script_html = currentScript.innerHTML
                                 s.appendChild(document.createTextNode(script_html));
-                                console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
-                                while(continue_loading == false)
-                                    {
-                                        var x = 1;
-                                    }
                             }
                         }
                     };
