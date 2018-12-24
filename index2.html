@@ -62,7 +62,7 @@ all events that you can trigger can go in here. Should be a singleton.
             
             var continue_loading = false;
             
-            var main_controller = {   
+            class view_controller{   
                 
                 script_loaded()
                 {
@@ -116,8 +116,9 @@ all events that you can trigger can go in here. Should be a singleton.
                     xhttp.send();
                 }
 
-            };
-
+            }
+            
+            view_controller new main_controller();
             main_controller.set_view("projects/daftpunk/daftpunk2.html");
 
         </script>
