@@ -62,10 +62,10 @@ all events that you can trigger can go in here. Should be a singleton.
 
             var main_controller = {   
 
-                var continue = false;
+                var continue_loading = false;
                 script_loaded()
                 {
-                    continue = true;
+                    continue_loading = true;
                 };
                 
                 set_view(m_view)
@@ -94,7 +94,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                     s.setAttribute(a.name, a.value);
                                     console.log(a.name + " xx " + a.value);
                                 }
-                                continue = false;
+                                continue_loading = false;
                                 script.onload = function() 
                                 {
                                     script_loaded();
@@ -104,7 +104,7 @@ all events that you can trigger can go in here. Should be a singleton.
                                 console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
-                                while(continute == false)
+                                while(continue_loading == false)
                                     {
                                         var x = 1;
                                     }
