@@ -59,15 +59,15 @@ all events that you can trigger can go in here. Should be a singleton.
 -->
 
         <script>
-
+            
+            var continue_loading = false;
+            
             var main_controller = {   
-                
-                continue_loading: false,
                 
                 script_loaded()
                 {
                     continue_loading = true;
-                };
+                }
                 
                 set_view(m_view)
                 {
