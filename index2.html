@@ -88,23 +88,17 @@ all events that you can trigger can go in here. Should be a singleton.
                                     s.setAttribute(a.name, a.value);
                                     console.log(a.name + " xx " + a.value);
                                 }
-                                if(i == 0)
+                                var continute = false;
+                                script.onload = function() 
                                 {
-                                    s.onload=function(){
-                                    $(document).ready(function(){
-                                        $("#fade1").fadeIn(1000);
-                                        $("#fade2").fadeIn(1500);
-                                        $("#fade3").fadeIn(2200);
-                                        $("#fade4").fadeIn(2500);
-                                        $("#fade5").fadeIn(2500);
-                                    });
-                                    }
-                                }
+                                    continute = true;
+                                };
                                 var script_html = currentScript.innerHTML
                                 s.appendChild(document.createTextNode(script_html));
                                 console.log(script_html)
                                 currentScript.parentNode.replaceChild(s, currentScript);
                                 console.log(s);
+                                while(continute == false);
                             }
                         }
                     };
