@@ -22,15 +22,15 @@
 
         <!-- Icon Bar (Sidenav - hidden on small screens) -->
         <nav class="w3-sidenav w3-center w3-small w3-hide-small">
-            <a class="w3-padding-large w3-black" href="index.html">
-                <i class="fa fa-home w3-xxlarge" href="index.html"></i>
+            <a class="w3-padding-large w3-black" onclick="main_controller.set_view('main.html')">
+                <i class="fa fa-home w3-xxlarge" onclick="main_controller.set_view('main.html')"></i>
                 <p>HOME</p>
             </a>
-            <a class="w3-padding-large w3-hover-black" href="about.html">
+            <a class="w3-padding-large w3-hover-black" onclick="main_controller.set_view('about.html')">
                 <i class="fa fa-user w3-xxlarge"></i>
                 <p>ABOUT</p>
             </a>
-            <a class="w3-padding-large w3-hover-black" href="projects.html">
+            <a class="w3-padding-large w3-hover-black" onclick="main_controller.set_view('projects.html')">
                 <img src="elements/sidebar/code-optimization-xxl.png" style="width:55% !important" alt="hi" class="inline"/>
                 <p>PROJECTS</p>
             </a>
