@@ -1,0 +1,80 @@
+<script> 
+    $(document).ready(function(){
+
+        $("#fade1").fadeIn(1000);
+
+        //-------MAIN TEXT ANIMATION------
+        var startPosY_text = 100;
+        var endPosY_text   = 0;
+
+        document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+startPosY_text.toString()+"px)"; 
+        document.getElementById("about_text").style.opacity = 0.0;
+
+        document.getElementById("about_text").style.visibility = "visible"; // unhide now that it is setup
+
+        $({someValue: startPosY_text}).animate({someValue: endPosY_text}, {
+            duration: 1000,
+            step: function() { 
+                document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+this.someValue.toString()+"px)"; 
+            }
+        });
+
+        $({someValue: 0.0}).delay(200).animate({someValue: 1.0}, {
+            duration: 1000,
+            step: function() { 
+                document.getElementById("about_text").style.opacity = this.someValue.toString();
+            }
+        });
+        //--------------------------------
+
+        //-------PICTURE ANIMATION------
+        var startPosX_pic = 100;
+        var endPosX_pic   = 0;
+
+        document.getElementById("about_picture").style.WebkitTransform = "translate("+startPosX_pic.toString()+"px,0px)"; 
+        document.getElementById("about_picture").style.opacity = 0.0;
+
+        document.getElementById("about_picture").style.visibility = "visible"; // unhide now that it is setup
+
+        $({someValue: startPosX_pic}).delay(500).animate({someValue: endPosX_pic}, {
+            duration: 1000,
+            step: function() { 
+                document.getElementById("about_picture").style.WebkitTransform = "translate("+this.someValue.toString()+"px,0px)"; 
+            }
+        });
+
+
+        $({someValue: 0.0}).delay(500+200).animate({someValue: 1.0}, {
+            duration: 1000,
+            step: function() { 
+                document.getElementById("about_picture").style.opacity = this.someValue.toString();
+            }
+        });
+
+        //--------------------------------
+
+    });
+</script> 
+
+<!-- Page Content -->
+<!-- Header/Home -->
+<header class="w3-container w3-padding-32 w3-center w3-black" id="projects">
+    <h1 id="fade1" style="display:none" class="w3-jumbo">About Henry</h1>
+</header>
+
+<div class="w3-padding-large" id="about">
+    <div id="about_picture" style="visibility:hidden">
+        <img class="w3-hide-small w3-right w3-padding-small w3-image" src="profilePicture.jpg" width="200" alt="Henry"/>
+        <img class="w3-hide-large w3-hide-medium w3-centered w3-image" src="profilePicture.jpg" width="200" alt="Henry"/>
+    </div>
+    <div id="about_text" style="visibility:hidden" class="w3-padding-small">
+        <p>
+            Hello. My name is Henry Bergin, and this is my personal site. Building things has been a passion of mine since I was a little kid. I started with snap-circuits and now I'm working on projects with cutting edge technology, such as Bluetooth Low Energy. This is my passion. I enjoy learning how things work, and my hope is to show you some of the cool stuff I work on here. Head on over to the projects page and check it out.
+        </p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+</footer>
+
