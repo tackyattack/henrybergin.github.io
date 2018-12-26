@@ -2,17 +2,17 @@
     <!-- Blog entry -->
     <div class="w3-card-4 w3-margin w3-white">
         <div class="w3-container w3-padding-8">
-            <h3 id="entry_title"><b>Title</b></h3>
-            <h5 id="entry_subtitle">Subtitle, <span id="entry_date" class="w3-opacity">Date</span></h5>
+            <h3 class="entry_title"><b>Title</b></h3>
+            <h5 class="entry_subtitle">Subtitle, <span class="w3-opacity">Date</span></h5>
         </div>
 
         <div class="w3-container">
-            <div id="entry_html" class="w3-center">
+            <div class="w3-center">
                 
             </div>
 
             <div class="w3-right m3 s12 w3-padding">
-                <a id="entry_readmore" class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" onclick="xx">READ MORE »</a>
+                <a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" onclick="xx">READ MORE »</a>
             </div>
         </div>
     </div>
@@ -21,20 +21,21 @@
 <!-- should instead build these dynamically based on the project_list json-->
 
 <script>
+    // should find a way to identify a node based on its parent and some parameter -- probably classes?
+    function searchElement
     function createPage(title, subtitle, html, date, link)
     {
         // return a div node that contains all the html for the page
-        console.log(title);
         var itm = document.getElementById("entry_template");
         var page_entry = itm.cloneNode(true); // deep copy
-        document.getElementById("entry_title").firstChild.innerHTML = title;
+        page_entry.childNodes[0].Element.innerHTML = title;
         
-        var subtitleText = document.getElementById("entry_subtitle");
-        subtitleText.innerHTML = subtitleText.innerHTML.replace("Subtitle", subtitle);
-        
-        document.getElementById("entry_html").innerHTML = html;
-        document.getElementById("entry_date").innerHTML = date;
-        document.getElementById("entry_readmore").setAttribute("onClick", "main_controller.set_view('" + link + "')");
+//        var subtitleText = page_entry.getElementById("entry_subtitle");
+//        subtitleText.innerHTML = subtitleText.innerHTML.replace("Subtitle", subtitle);
+//        
+//        page_entry.getElementById("entry_html").innerHTML = html;
+//        page_entry.getElementById("entry_date").innerHTML = date;
+//        page_entry.getElementById("entry_readmore").setAttribute("onClick", "main_controller.set_view('" + link + "')");
         page_entry.style.display = "inline";
         return page_entry;
         
@@ -45,7 +46,6 @@
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === 4) {
                 if (httpRequest.status === 200) {
-                    console.log(httpRequest.responseText);
                     var data = JSON.parse(httpRequest.responseText);
                     if (callback) callback(data);
                 }
