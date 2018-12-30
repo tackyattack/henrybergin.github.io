@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- python -m SimpleHTTPServer 8080 -->
-<!-- http://127.0.0.1:8080/projects2.html -->
+<!-- http://127.0.0.1:8080/index2.html -->
 <html>
     <title>Henry's personal site</title>
     <meta charset="UTF-8">
@@ -66,11 +66,23 @@ all events that you can trigger can go in here. Should be a singleton.
 
             class view_controller{   
 
+                //m_viewReady;
+
+                constructor() 
+                {    
+                    this.m_viewReady = false;
+                }
+
+                viewReady()
+                {
+                    return m_viewReady;
+                }
+
                 update_sidebar(m_view)
                 {
-                    
+
                     var view = m_view.substring(m_view.lastIndexOf("/") + 1, m_view.length)
-                    
+
                     if(view === "main.html")
                     {
                         console.log("main");
@@ -91,6 +103,8 @@ all events that you can trigger can go in here. Should be a singleton.
 
                 set_view(m_view)
                 {
+                    self.m_viewReady = false;
+
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() 
                     {
@@ -101,6 +115,25 @@ all events that you can trigger can go in here. Should be a singleton.
                             var scripts = document.getElementById("main").getElementsByTagName("script");
 
                             // replace the scripts with ones that can actually run
+                            
+                            // Kind of like making a namespace
+                            // TODO: instead of adding scripts like this, there needs to be
+                            //  a way to remove the scripts when the next view loads since
+                            //  even though they are removed from the DOM, they are still loaded.
+                            //  Maybe have it so they are encapsulated in a list of functions (container functions created // here),
+                            // which
+                            //  then get redefined (replaced by next scripts or set to null) so that
+                            //  they are no longer running.
+                            //  Local variables should also go away when it gets replaced since it will
+                            //  all be under one function.
+                            
+                            // maybe in this class there could be a functions = [] array
+                            // Then push them in according to order they appear in scripts
+                            // function1(){.. script ..}
+                            // function2(){.. script ..} etc
+                            // next call each one of those functions -- since most scripts
+                            // are blocking on browsers, it will be the same behavior.
+                            
                             var scriptsClone = [];
                             for (var i = 0; i < scripts.length; i++) {
                                 scriptsClone.push(scripts[i]);
@@ -125,6 +158,7 @@ all events that you can trigger can go in here. Should be a singleton.
                     xhttp.send();
                     window.scrollTo(0, 0); // scroll back to the top when switching a view -- could save a position in the future
                     this.update_sidebar(m_view);
+                    self.m_viewReady = true;
                 }
 
             }

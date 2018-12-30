@@ -1,59 +1,60 @@
 <script> 
-    $(document).ready(function(){
+    while(!main_controller.viewReady())
+    {
 
-        $("#fade1").fadeIn(1000);
+    }
 
-        //-------MAIN TEXT ANIMATION------
-        var startPosY_text = 100;
-        var endPosY_text   = 0;
+    $("#fade1").fadeIn(1000);
 
-        document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+startPosY_text.toString()+"px)"; 
-        document.getElementById("about_text").style.opacity = 0.0;
+    //-------MAIN TEXT ANIMATION------
+    var startPosY_text = 100;
+    var endPosY_text   = 0;
 
-        document.getElementById("about_text").style.visibility = "visible"; // unhide now that it is setup
+    document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+startPosY_text.toString()+"px)"; 
+    document.getElementById("about_text").style.opacity = 0.0;
 
-        $({someValue: startPosY_text}).animate({someValue: endPosY_text}, {
-            duration: 1000,
-            step: function() { 
-                document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+this.someValue.toString()+"px)"; 
-            }
-        });
+    document.getElementById("about_text").style.visibility = "visible"; // unhide now that it is setup
 
-        $({someValue: 0.0}).delay(200).animate({someValue: 1.0}, {
-            duration: 1000,
-            step: function() { 
-                document.getElementById("about_text").style.opacity = this.someValue.toString();
-            }
-        });
-        //--------------------------------
-
-        //-------PICTURE ANIMATION------
-        var startPosX_pic = 100;
-        var endPosX_pic   = 0;
-
-        document.getElementById("about_picture").style.WebkitTransform = "translate("+startPosX_pic.toString()+"px,0px)"; 
-        document.getElementById("about_picture").style.opacity = 0.0;
-
-        document.getElementById("about_picture").style.visibility = "visible"; // unhide now that it is setup
-
-        $({someValue: startPosX_pic}).delay(500).animate({someValue: endPosX_pic}, {
-            duration: 1000,
-            step: function() { 
-                document.getElementById("about_picture").style.WebkitTransform = "translate("+this.someValue.toString()+"px,0px)"; 
-            }
-        });
-
-
-        $({someValue: 0.0}).delay(500+200).animate({someValue: 1.0}, {
-            duration: 1000,
-            step: function() { 
-                document.getElementById("about_picture").style.opacity = this.someValue.toString();
-            }
-        });
-
-        //--------------------------------
-
+    $({someValue: startPosY_text}).animate({someValue: endPosY_text}, {
+        duration: 1000,
+        step: function() { 
+            document.getElementById("about_text").style.WebkitTransform = "translate(0px,"+this.someValue.toString()+"px)"; 
+        }
     });
+//
+//    $({someValue: 0.0}).delay(200).animate({someValue: 1.0}, {
+//        duration: 1000,
+//        step: function() { 
+//            document.getElementById("about_text").style.opacity = this.someValue.toString();
+//        }
+//    });
+    //--------------------------------
+
+    //-------PICTURE ANIMATION------
+//    var startPosX_pic = 100;
+//    var endPosX_pic   = 0;
+//
+//    document.getElementById("about_picture").style.WebkitTransform = "translate("+startPosX_pic.toString()+"px,0px)"; 
+//    document.getElementById("about_picture").style.opacity = 0.0;
+//
+//    document.getElementById("about_picture").style.visibility = "visible"; // unhide now that it is setup
+//
+//    $({someValue: startPosX_pic}).delay(500).animate({someValue: endPosX_pic}, {
+//        duration: 1000,
+//        step: function() { 
+//            document.getElementById("about_picture").style.WebkitTransform = "translate("+this.someValue.toString()+"px,0px)"; 
+//        }
+//    });
+//
+//
+//    $({someValue: 0.0}).delay(500+200).animate({someValue: 1.0}, {
+//        duration: 1000,
+//        step: function() { 
+//            document.getElementById("about_picture").style.opacity = this.someValue.toString();
+//        }
+//    });
+
+    //--------------------------------
 </script> 
 
 <!-- Page Content -->
@@ -69,7 +70,7 @@
     </div>
     <div id="about_text" style="visibility:hidden" class="w3-padding-small">
         <p>
-            Hello. My name is Henry Bergin, and this is my personal site. Building things has been a passion of mine since I was a little kid. I started with snap-circuits and now I'm working on projects with cutting edge technology, such as Bluetooth Low Energy. This is my passion. I enjoy learning how things work, and my hope is to show you some of the cool stuff I work on here. Head on over to the projects page and check it out.
+            My name is Henry Bergin, and this is my personal site. Building things has been a passion of mine since I was a little kid. I started with snap-circuits and now I'm working on projects with cutting edge technology, such as Bluetooth Low Energy. This is my passion. I enjoy learning how things work, and my hope is to show you some of the cool stuff I work on here. Head over to the projects page and check it out.
         </p>
     </div>
 </div>
