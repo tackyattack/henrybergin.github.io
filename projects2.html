@@ -3,16 +3,18 @@
     <div class="w3-card-4 w3-margin w3-white">
         <div class="w3-container w3-padding-8">
             <h3 class="entry_title"><b>Title</b></h3>
-            <h5 class="entry_subtitle">Subtitle, <span class="w3-opacity">Date</span></h5>
+            <h5 class="entry_subtitle">Subtitle, <div class="entry_date" style="display:inline-block"><span class="w3-opacity">Date</span></div> </h5>
         </div>
 
         <div class="w3-container">
             <div class="w3-center">
-                
+                <div class="entry_html"></div>
             </div>
 
             <div class="w3-right m3 s12 w3-padding">
+                <div class="entry_readmore">
                 <a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" onclick="xx">READ MORE »</a>
+                </div>
             </div>
         </div>
     </div>
@@ -21,21 +23,42 @@
 <!-- should instead build these dynamically based on the project_list json-->
 
 <script>
-    // should find a way to identify a node based on its parent and some parameter -- probably classes?
-    function searchElement
+    function getChildIndexByClassName(parent, name)
+    {
+        var elements = parent.getElementsByTagName("*");
+        var found = false;
+        var counter = 0;
+        while((counter < elements.length) && (!found))
+        {
+            if(elements[counter].className === name)
+            {
+                found = true;
+            }
+            
+            counter++;
+        }
+        counter = counter - 1;
+        return counter; 
+    }
+    
     function createPage(title, subtitle, html, date, link)
     {
         // return a div node that contains all the html for the page
         var itm = document.getElementById("entry_template");
         var page_entry = itm.cloneNode(true); // deep copy
-        page_entry.childNodes[0].Element.innerHTML = title;
+        var elements = page_entry.getElementsByTagName("*");
         
-//        var subtitleText = page_entry.getElementById("entry_subtitle");
-//        subtitleText.innerHTML = subtitleText.innerHTML.replace("Subtitle", subtitle);
-//        
-//        page_entry.getElementById("entry_html").innerHTML = html;
-//        page_entry.getElementById("entry_date").innerHTML = date;
-//        page_entry.getElementById("entry_readmore").setAttribute("onClick", "main_controller.set_view('" + link + "')");
+        var entry_title = getChildIndexByClassName(page_entry, "entry_title") + 1;
+        var entry_subtitle = getChildIndexByClassName(page_entry, "entry_subtitle");
+        var entry_date = getChildIndexByClassName(page_entry, "entry_date") + 1;
+        var entry_html = getChildIndexByClassName(page_entry, "entry_html");
+        var entry_readmore = getChildIndexByClassName(page_entry, "entry_readmore") + 1;
+        
+        elements[entry_title].innerHTML = title;
+        elements[entry_subtitle].innerHTML = elements[entry_subtitle].innerHTML.replace("Subtitle", subtitle);
+        elements[entry_date].innerHTML = date;
+        elements[entry_html].innerHTML = html;
+        elements[entry_readmore].setAttribute("onClick", "main_controller.set_view('" + link + "')");
         page_entry.style.display = "inline";
         return page_entry;
         
