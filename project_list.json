@@ -1,17 +1,23 @@
 {
     "pages":
     [
-        {"title":"First entry", 
-         "subtitle":"A rendering engine built from the ground up in C++",
-         "date":"June, 2018",
-         "html":"x",
-         "link":"projects/pathFire/pathFire.html"
-        },
-        {"title":"Second entry", 
+        {"title":"PathFire: A 3D Raytracer", 
          "subtitle":"A rendering engine built from the ground up in C++",
          "date":"June, 2017",
-         "html":"x",
-         "link":"projects/pathFire/pathFire.html"
+         "html":"<img class=\"w3-image\" src=\"projects/pathFire/images/arrow.png\" width=\"700\" alt=\"Normal Visualization\"/>",
+         "link":"projects/pathFire/pathFire2.html"
+        },
+        {"title":"Self Driving Car", 
+         "subtitle":"My homemade self driving car",
+         "date":"June, 2016",
+         "html":"<img class=\"w3-image\" src=\"projects/self_driving_car/IMG_4575.JPG\" width=\"700\" alt=\"Car setup\"/>",
+         "link":"projects/self_driving_car/self_driving_car2.html"
+        },
+        {"title":"Daft Punk Helmet", 
+         "subtitle":"A halloween costume",
+         "date":"October, 2014",
+         "html":"<iframe class=\"henry-video-container\" width=\"560\" height=\"315\"  src=\"https://www.youtube.com/embed/Ndc-34iGLik\" frameborder=\"0\" allowfullscreen></iframe>",
+         "link":"projects/daftpunk/daftpunk2.html"
         }
     ]
 }

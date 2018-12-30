@@ -33,7 +33,7 @@
                 <i class="fa fa-user w3-xxlarge"></i>
                 <p>ABOUT</p>
             </a>
-            <a class="w3-padding-large w3-hover-black" onclick="main_controller.set_view('projects.html')">
+            <a class="w3-padding-large w3-hover-black" onclick="main_controller.set_view('projects2.html')">
                 <img src="elements/sidebar/code-optimization-xxl.png" style="width:55% !important" alt="hi" class="inline"/>
                 <p>PROJECTS</p>
             </a>
@@ -45,7 +45,7 @@
             <ul class="w3-navbar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
                 <li class="w3-left" style="width:33.333% !important"><a onclick="main_controller.set_view('main.html')">HOME</a></li>
                 <li class="w3-left" style="width:33.333% !important"><a onclick="main_controller.set_view('about.html')">ABOUT</a></li>
-                <li class="w3-left" style="width:33.333% !important"><a onclick="main_controller.set_view('projects.html')">PROJECTS</a></li>
+                <li class="w3-left" style="width:33.333% !important"><a onclick="main_controller.set_view('projects2.html')">PROJECTS</a></li>
             </ul>
         </div>
 
@@ -100,6 +100,7 @@ all events that you can trigger can go in here. Should be a singleton.
                     };
                     xhttp.open("GET", m_view, true);
                     xhttp.send();
+                    window.scrollTo(0, 0); // scroll back to the top when switching a view -- could save a position in the future
                 }
 
             }
