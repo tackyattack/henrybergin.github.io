@@ -13,7 +13,7 @@
 
             <div class="w3-right m3 s12 w3-padding">
                 <div class="entry_readmore">
-                <a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" onclick="xx">READ MORE »</a>
+                    <a class="w3-btn w3-padding-large w3-white w3-border w3-hover-border-black" onclick="xx">READ MORE »</a>
                 </div>
             </div>
         </div>
@@ -34,26 +34,26 @@
             {
                 found = true;
             }
-            
+
             counter++;
         }
         counter = counter - 1;
         return counter; 
     }
-    
+
     function createPage(title, subtitle, html, date, link)
     {
         // return a div node that contains all the html for the page
         var itm = document.getElementById("entry_template");
         var page_entry = itm.cloneNode(true); // deep copy
         var elements = page_entry.getElementsByTagName("*");
-        
+
         var entry_title = getChildIndexByClassName(page_entry, "entry_title") + 1;
         var entry_subtitle = getChildIndexByClassName(page_entry, "entry_subtitle");
         var entry_date = getChildIndexByClassName(page_entry, "entry_date") + 1;
         var entry_html = getChildIndexByClassName(page_entry, "entry_html");
-        var entry_readmore = getChildIndexByClassName(page_entry, "entry_readmore") + 1;
-        
+        var entry_readmore = getChildIndexByClassName(page_entry, "entry_readmore") + 2;
+
         elements[entry_title].innerHTML = title;
         elements[entry_subtitle].innerHTML = elements[entry_subtitle].innerHTML.replace("Subtitle", subtitle);
         elements[entry_date].innerHTML = date;
