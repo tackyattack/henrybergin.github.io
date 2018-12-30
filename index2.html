@@ -26,7 +26,7 @@
 <!-- Icon Bar (Sidenav - hidden on small screens) -->
         <nav class="w3-sidenav w3-center w3-small w3-hide-small">
             <a class="w3-padding-large w3-black" onclick="main_controller.set_view('main.html')">
-                <i class="fa fa-home w3-xxlarge" onclick="main_controller.set_view('main.html')"></i>
+                <i class="fa fa-home w3-xxlarge"></i>
                 <p>HOME</p>
             </a>
             <a class="w3-padding-large w3-hover-black" onclick="main_controller.set_view('about2.html')">
@@ -64,18 +64,42 @@ all events that you can trigger can go in here. Should be a singleton.
 
         <script>
 
+            var scripts_container = [];
+
+            function a()
+            {
+                var m = 0;
+                m++;
+                console.log("hello" + m);
+            }
+            var b=setInterval(a,1000);
+            
+            a = null;
+
+
+//            function clearSamp()
+//            {
+//                a = undefined;
+//            }
+//            setInterval(clearSamp,5000);
+
             class view_controller{   
 
-                //m_viewReady;
+                func0()
+                {
+
+                }
+
 
                 constructor() 
                 {    
                     this.m_viewReady = false;
+                    this.scripts = []
                 }
 
                 viewReady()
                 {
-                    return m_viewReady;
+                    return this.m_viewReady;
                 }
 
                 update_sidebar(m_view)
@@ -101,9 +125,44 @@ all events that you can trigger can go in here. Should be a singleton.
                     }
                 }
 
+                add_scripts(m_scripts)
+                {
+
+                    for (var i = 0; i < m_scripts.length; i++)
+                    {
+                        var name = "func" + i;
+                        var func_str = m_scripts[i].innerHTML;
+                        scripts_container[0] = undefined;
+                        var fn = new Function("return function " + name + "(){" + func_str + "};")();
+
+                        scripts_container[0] = fn;
+                        //console.log(scripts_container);
+                        //                        if(scripts_container.length < i + 1)
+                        //                        {
+                        //                            scripts_container.push(fn);
+                        //                        }
+                        //                        else
+                        //                        {
+                        //                            scripts_container[i] = fn;
+                        //                        }
+                        //                        console.log(scripts_container);
+
+                    }
+                }
+
+                run_scripts()
+                {
+                    for (var i = 0; i < scripts_container.length; i++)
+                    {
+                        scripts_container[i]();
+                    }
+                }
+
                 set_view(m_view)
                 {
-                    self.m_viewReady = false;
+                    this.m_viewReady = false;
+                    //scripts_container = [];
+
 
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function() 
@@ -112,10 +171,10 @@ all events that you can trigger can go in here. Should be a singleton.
                         {
                             document.getElementById("main").innerHTML = this.responseText;
 
-                            var scripts = document.getElementById("main").getElementsByTagName("script");
+                            //var scripts = document.getElementById("main").getElementsByTagName("script");
 
                             // replace the scripts with ones that can actually run
-                            
+
                             // Kind of like making a namespace
                             // TODO: instead of adding scripts like this, there needs to be
                             //  a way to remove the scripts when the next view loads since
@@ -126,39 +185,44 @@ all events that you can trigger can go in here. Should be a singleton.
                             //  they are no longer running.
                             //  Local variables should also go away when it gets replaced since it will
                             //  all be under one function.
-                            
+
                             // maybe in this class there could be a functions = [] array
                             // Then push them in according to order they appear in scripts
                             // function1(){.. script ..}
                             // function2(){.. script ..} etc
                             // next call each one of those functions -- since most scripts
                             // are blocking on browsers, it will be the same behavior.
-                            
-                            var scriptsClone = [];
-                            for (var i = 0; i < scripts.length; i++) {
-                                scriptsClone.push(scripts[i]);
-                            }
-                            for (var i = 0; i < scriptsClone.length; i++) {
-                                var currentScript = scriptsClone[i];
-                                var s = document.createElement("script");
-                                s.async = false;
-                                // Copy all the attributes from the original script
-                                for (var j = 0; j < currentScript.attributes.length; j++) {
-                                    var a = currentScript.attributes[j];
-                                    s.setAttribute(a.name, a.value);
-                                }
-                                var script_html = currentScript.innerHTML
-                                s.appendChild(document.createTextNode(script_html));
-                                currentScript.parentNode.replaceChild(s, currentScript);
-                                console.log(s);
-                            }
+
+                            //                            var scriptsClone = [];
+                            //                            for (var i = 0; i < scripts.length; i++) {
+                            //                                scriptsClone.push(scripts[i]);
+                            //                            }
+                            //                            for (var i = 0; i < scriptsClone.length; i++) {
+                            //                                var currentScript = scriptsClone[i];
+                            //                                var s = document.createElement("script");
+                            //                                s.async = false;
+                            //                                // Copy all the attributes from the original script
+                            //                                for (var j = 0; j < currentScript.attributes.length; j++) {
+                            //                                    var a = currentScript.attributes[j];
+                            //                                    s.setAttribute(a.name, a.value);
+                            //                                }
+                            //                                var script_html = currentScript.innerHTML
+                            //                                s.appendChild(document.createTextNode(script_html));
+                            //                                currentScript.parentNode.replaceChild(s, currentScript);
+                            //                                console.log(s);
+                            //                            }
+
                         }
                     };
                     xhttp.open("GET", m_view, true);
                     xhttp.send();
                     window.scrollTo(0, 0); // scroll back to the top when switching a view -- could save a position in the future
+
+                    var scripts = document.getElementById("main").getElementsByTagName("script");
+                    this.add_scripts(scripts);
                     this.update_sidebar(m_view);
-                    self.m_viewReady = true;
+                    this.m_viewReady = true;
+                    this.run_scripts();
                 }
 
             }
